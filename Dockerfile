@@ -3,8 +3,8 @@ FROM debian:10.2
 ###############################################
 # ARG
 ###############################################
-ARG adminPass=12345
-ARG mysqlPass=12345
+ARG adminPass=EnterYourSetPasswd
+ARG mysqlPass=EnterYourPasswd
 ARG pythonVersion=python3
 ARG appBranch=version-12
 
@@ -256,4 +256,4 @@ RUN sudo chmod +x /home/$systemUser/production_config/entrypoint_prd.sh \
 CMD ["/usr/local/bin/entrypoint.sh"]
 
 # expose port
-EXPOSE 8000-8005 9000-9005 3306-3307
+EXPOSE 8000 9000 3306
