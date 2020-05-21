@@ -34,7 +34,7 @@ ENV benchPath=bench-repo \
     
 # SetupSytem
 ###############################################
- ENV adminPass=EnterYourSetPasswd \
+ ENV adminPass=EnterYourSetPasswd
  #   themesource="https://github.com/RandyLowery/business_theme"
      
 ###############################################
