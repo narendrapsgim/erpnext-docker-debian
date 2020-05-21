@@ -16,7 +16,7 @@ ENV LANGUAGE=en_US \
 ## You will not receive security or critical stability updates for this version.
 ENV mariadbVersion=10.3 \
     nodejsVersion=10.x \
-    ARG pythonVersion=python3 \
+    pythonVersion=python3 \
     appBranch=version-12 \
     mysqlPass=EnterYourPasswd
 # frappe
