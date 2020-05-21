@@ -261,4 +261,4 @@ RUN sudo chmod +x /home/$systemUser/production_config/entrypoint_prd.sh \
 CMD ["/usr/local/bin/entrypoint.sh"]
 
 # expose port
-EXPOSE 8000 9000 3306
+EXPOSE 8090 8091 33306
