@@ -1,14 +1,6 @@
 FROM debian:10.2
 
 ###############################################
-# ARG
-###############################################
-ARG adminPass=EnterYourSetPasswd
-ARG mysqlPass=EnterYourPasswd
-ARG pythonVersion=python3
-ARG appBranch=version-12
-
-###############################################
 # ENV 
 ###############################################
 # user pass
@@ -23,7 +15,10 @@ ENV LANGUAGE=en_US \
 ## Node.js 11.x is no longer actively supported!
 ## You will not receive security or critical stability updates for this version.
 ENV mariadbVersion=10.3 \
-    nodejsVersion=10.x
+    nodejsVersion=10.x \
+    ARG pythonVersion=python3 \
+    appBranch=version-12 \
+    mysqlPass=EnterYourPasswd
 # frappe
 ENV benchPath=bench-repo \
     benchFolderName=bench \
@@ -32,7 +27,12 @@ ENV benchPath=bench-repo \
     frappeRepo="https://github.com/frappe/frappe" \
     erpnextRepo="https://github.com/frappe/erpnext" \
     siteName=site1.local
-
+    
+# SetupSytem
+###############################################
+ ENV adminPass=EnterYourSetPasswd \
+ #   themesource="https://github.com/RandyLowery/business_theme"
+     
 ###############################################
 # INSTALL PREREQUISITE
 ###############################################
@@ -226,6 +226,11 @@ RUN sudo service mysql start \
     --mariadb-root-password $mysqlPass  \
     --admin-password $adminPass \
     && bench --site $siteName install-app erpnext \
+    
+    # && bench get-app business_theme $themesource --branch master \
+    # && bench install-app business_theme \
+
+    
     # [HOTFIX] No module named ‘werkzeug.contrib’
     ## https://discuss.erpnext.com/t/modulenotfounderror-no-module-named-werkzeug-contrib-erpnext-12-4-3/57792
     ## version 12 should upgrade soon
